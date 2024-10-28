@@ -62,7 +62,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run CMake
-        run: cmake -Bbuild -D BOOST_ROOT=C:\runner\boost/boost\ .
+        run: cmake -Bbuild -D BOOST_ROOT=C:\runner\boost/boost\ -D CMAKE_INSTALL_PREFIX=C:\COVESA\lib .
 
       - name: Build CMake
-        run: cmake --build build
+        run: cmake --build build --target install
+
+      - name: List vsomeip libs
+        run: dir C:\COVESA\lib
